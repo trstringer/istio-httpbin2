@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: {{ .Values.istio.repository.name }}
+  namespace: istio-system
+spec:
+  interval: {{ .Values.istio.repository.interval }}
+  url: {{ .Values.istio.repository.url }}

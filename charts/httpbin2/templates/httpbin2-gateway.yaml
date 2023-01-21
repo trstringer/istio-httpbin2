@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: {{ .Values.httpbin2.instance1.name }}
+  namespace: {{ .Values.httpbin2.instance1.namespace }}
+spec:
+  selector:
+    istio: ingress
+  servers:
+    - port:
+        number: {{ .Values.httpbin2.servicePort }}
+        name: http
+        protocol: HTTP
+      hosts:
+        - {{ .Values.httpbin2.instance1.fqdn }}

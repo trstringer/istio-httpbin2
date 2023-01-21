@@ -1,0 +1,24 @@
+httpbin2:
+  defaultNamespace: httpbin2
+  servicePort: 80
+  port: 8080
+  imagePullPolicy: Always
+  replicas: 1
+  image:
+    repo: ghcr.io/trstringer/httpbin2
+  instance1:
+    name: httpbin2-1
+    namespace: httpbin2
+    fqdn: httpbin2.com
+  instance2:
+    name: httpbin2-2
+    namespace: httpbin2
+    qos:
+      delayMin: 5000
+      delayMax: 5000
+      delayRate: 50
+      statusCode: 200
+      statusCodeRate: 100
+  instance3:
+    name: httpbin2-3
+    namespace: httpbin2

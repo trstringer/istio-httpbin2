@@ -1,0 +1,6 @@
+apiVersion: v2
+name: istio-httpbin2
+description: Istio environment for testing
+type: application
+
+version: 0.1.0

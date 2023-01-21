@@ -1,0 +1,9 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: {{ .Values.httpbin2.repository.name }}
+  namespace: {{ .Values.httpbin2.repository.namespace }}
+spec:
+  type: {{ .Values.httpbin2.repository.type }}
+  interval: {{ .Values.httpbin2.repository.interval }}
+  url: {{ .Values.httpbin2.repository.url }}

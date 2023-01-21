@@ -1,0 +1,7 @@
+apiVersion: v2
+name: httpbin2-chart
+description: Application helm chart with httpbin2
+type: application
+
+version: 0.1.1
+appVersion: "0.1.0"

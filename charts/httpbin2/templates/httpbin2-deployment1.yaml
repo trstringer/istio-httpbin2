@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.httpbin2.instance1.name }}
+  namespace: {{ .Values.httpbin2.instance1.namespace }}
+spec:
+  replicas: {{ .Values.httpbin2.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.httpbin2.instance1.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.httpbin2.instance1.name }}
+    spec:
+      containers:
+        - name: {{ .Values.httpbin2.instance1.name }}
+          image: "{{ .Values.httpbin2.image.repo }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.httpbin2.imagePullPolicy }}
+          args:
+            - "/httpbin2"
+            - "--message-hostname"
+            - "--message"
+            - "{{ .Values.httpbin2.instance1.name }}"
+            - "--port"
+            - "{{ .Values.httpbin2.port }}"
+            - "--relay"
+            - "http://{{ .Values.httpbin2.instance2.name }}"
+          ports:
+            - containerPort: {{ .Values.httpbin2.port }}

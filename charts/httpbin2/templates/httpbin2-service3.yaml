@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.httpbin2.instance3.name }}
+  namespace: {{ .Values.httpbin2.instance3.namespace }}
+spec:
+  selector:
+    app: {{ .Values.httpbin2.instance3.name }}
+  ports:
+    - name: http
+      port: {{ .Values.httpbin2.servicePort }}
+      targetPort: {{ .Values.httpbin2.port }}

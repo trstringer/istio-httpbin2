@@ -1,0 +1,23 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: istio-ingress
+  namespace: {{ .Values.ingress.namespace }}
+spec:
+  interval: {{ .Values.reconciliation.interval }}
+  dependsOn:
+    - name: istio-base
+      namespace: {{ .Values.istio.namespace }}
+    - name: istiod
+      namespace: {{ .Values.istio.namespace }}
+  chart:
+    spec:
+      chart: gateway
+      version: {{ .Values.istio.version }}
+      sourceRef:
+        kind: HelmRepository
+        name: istio
+        namespace: {{ .Values.istio.namespace }}
+      interval: {{ .Values.chart.interval }}
+{{- end }}

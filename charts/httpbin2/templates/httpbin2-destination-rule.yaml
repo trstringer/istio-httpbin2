@@ -1,0 +1,11 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: {{ .Values.httpbin2.instance2.name }}
+  namespace: {{ .Values.httpbin2.instance2.namespace }}
+spec:
+  host: {{ .Values.httpbin2.instance2.name }}
+  subsets:
+    - name: all
+      labels:
+        app: {{ .Values.httpbin2.instance2.name }}

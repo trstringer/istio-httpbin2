@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: "{{ .Values.httpbin2.instance2.name }}-retries"
+  namespace: {{ .Values.httpbin2.instance2.namespace }}
+spec:
+  hosts:
+    - {{ .Values.httpbin2.instance2.name }}
+  http:
+    - route:
+      - destination:
+          host: {{ .Values.httpbin2.instance2.name }}
+          subset: all
+      retries:
+        attempts: 3
+        perTryTimeout: 1s
+        retryOn: 5xx

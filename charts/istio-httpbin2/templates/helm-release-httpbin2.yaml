@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: httpbin2
+spec:
+  interval: {{ .Values.reconciliation.interval }}
+  dependsOn:
+    - name: istiod
+      namespace: {{ .Values.istio.namespace }}
+    - name: istio-ingress
+      namespace: {{ .Values.ingress.namespace }}
+  chart:
+    spec:
+      chart: {{ .Values.httpbin2.chart.name }}
+      version: {{ .Values.httpbin2.chart.version }}
+      sourceRef:
+        kind: HelmRepository
+        name: {{ .Values.httpbin2.repository.name }}
+        namespace: {{ .Values.httpbin2.repository.namespace }}

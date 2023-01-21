@@ -1,0 +1,30 @@
+istio:
+  version: 1.16.1
+  revision:
+    default: default
+  namespace: istio-system
+  repository:
+    url: https://istio-release.storage.googleapis.com/charts
+    interval: 5m
+    name: istio
+
+ingress:
+  enabled: true
+  namespace: istio-ingress
+
+reconciliation:
+  interval: 5m
+
+chart:
+  interval: 1m
+
+httpbin2:
+  chart:
+    name: httpbin2-chart
+    version: 0.1.1
+  repository:
+    name: httpbin2
+    interval: 5m
+    type: oci
+    url: oci://ghcr.io/trstringer
+    namespace: default

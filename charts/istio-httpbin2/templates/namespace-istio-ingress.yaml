@@ -1,0 +1,8 @@
+{{- if .Values.ingress.enabled }}
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: {{ .Values.ingress.namespace }}
+  labels:
+    istio-injection: enabled
+{{- end }}
