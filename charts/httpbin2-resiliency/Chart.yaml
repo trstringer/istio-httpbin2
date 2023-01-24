@@ -1,5 +1,5 @@
 apiVersion: v2
-name: httpbin2-chart
+name: httpbin2-resiliency
 description: Application helm chart with httpbin2
 type: application
 

@@ -1,0 +1,8 @@
+Installation/upgrade of *httpbin2 for resiliency* complete.
+
+Curl the endpoint:
+
+$ INGRESS_IP=$(kubectl get svc -n istio-ingress -l app=istio-ingress -o jsonpath='{.items[0].status.loadBalancer.ingress[0].ip}')
+$ curl -H "host: httpbin2.com" "http://${INGRESS_IP}"
+
+Notice in the logs of httpbin2-2 that if there is a timeout or non-200 the retry will happen and the end user will still get the result.
