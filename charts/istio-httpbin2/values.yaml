@@ -20,11 +20,11 @@ chart:
 
 httpbin2:
   chart:
-    name: httpbin2-chart
+    name: httpbin2-resiliency
     version: 0.1.x
   repository:
-    name: httpbin2
+    name: trstringercharts
     interval: 5m
     type: oci
-    url: oci://ghcr.io/trstringer
+    url: oci://ghcr.io/trstringer/charts
     namespace: default
