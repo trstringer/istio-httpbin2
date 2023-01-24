@@ -21,7 +21,7 @@ chart:
 httpbin2:
   chart:
     name: httpbin2-chart
-    version: 0.1.1
+    version: 0.1.x
   repository:
     name: httpbin2
     interval: 5m
